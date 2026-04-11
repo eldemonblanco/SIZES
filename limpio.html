@@ -1,1 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="description" content="EXTINTO – Recarga y mantenimiento de extintores con protocolo cyberpunk 2025. El futuro se protege con precisión quirúrgica."/>
+  <meta name="keywords" content="recarga extintores, mantenimiento extintores, prueba hidrostática, extintores Bogotá, servicio técnico extintores, cyberpunk, extinto"/>
+  <meta name="author" content="EXTINTO Systems"/>
+  <meta property="og:title" content="EXTINTO | Cyber Experience 2025"/>
+  <meta property="og:description" content="El futuro ya llegó… y se apagó. Recarga, mantenimiento y protocolos de supervivencia con tecnología de vanguardia."/>
+  <meta property="og:type" content="website"/>
+  <title>EXTINTO | Cyber Experience 2025</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&amp;family=Rajdhani:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --cyan: #00ffff;
+      --magenta: #ff00ff;
+      --violet: #9d00ff;
+      --lime: #39ff14;
+      --gray: #0a0a0a;
+      --dark: #05050a;
+    }
+    
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    
+    body{
+      background:var(--dark);
+      color:#fff;
+      font-family:'Rajdhani',sans-serif;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      position:relative;
+    }
+    
+    h1,h2,h3{font-family:'Orbitron',sans-serif;text-transform:uppercase;letter-spacing:4px;}
+    
+    /* ==================== HEADER CYBER ==================== */
+    header{
+      position:fixed;top:0;left:0;width:100%;background:rgba(5,5,10,0.95);
+      backdrop-filter:blur(16px);z-index:1000;
+      padding:15px 5%;display:flex;justify-content:space-between;align-items:center;
+      border-bottom:3px solid var(--cyan);
+      box-shadow:0 0 30px var(--cyan);
+    }
+    
+    .logo{
+      font-size:clamp(2.2rem,6vw,3.2rem);font-weight:900;
+      background:linear-gradient(90deg,var(--cyan),var(--magenta),var(--lime));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      letter-spacing:8px;text-shadow:0 0 40px var(--cyan);
+      display:flex;align-items:center;gap:8px;
+    }
+    .logo::before{
+      content:'◼︎';color:var(--lime);animation:blink 1.2s infinite;
+    }
+    
+    nav{display:flex;gap:28px;flex-wrap:wrap;align-items:center;}
+    nav a{
+      color:#fff;text-decoration:none;font-weight:600;font-size:1.15rem;
+      transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
+      position:relative;
+    }
+    nav a::after{
+      content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;
+      background:var(--cyan);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
+    }
+    nav a:hover{color:var(--cyan);transform:translateY(-2px);}
+    nav a:hover::after{width:100%;}
+    
+    .menu-toggle{
+      display:none;font-size:2.4rem;color:var(--cyan);cursor:pointer;
+      transition:0.3s;
+    }
+    .status-bar{
+      position:absolute;top:100%;left:0;right:0;background:rgba(0,255,255,0.08);
+      padding:4px 5%;font-size:0.85rem;letter-spacing:3px;color:var(--lime);
+      display:flex;align-items:center;justify-content:center;gap:20px;
+      border-top:1px solid rgba(0,255,255,0.2);font-family:monospace;
+    }
+    .status-bar span{color:var(--cyan);animation:pulse-cyan 2s infinite;}
+
+    /* ==================== HERO ==================== */
+    .hero{
+      min-height:100vh;background:linear-gradient(135deg,#05050a,#1a0033);
+      display:flex;align-items:center;justify-content:center;text-align:center;
+      position:relative;padding:120px 20px 80px;overflow:hidden;
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(157,0,255,0.15),transparent 70%);
+      pointer-events:none;
+    }
+    
+    #particles-js{position:absolute;width:100%;height:100%;top:0;left:0;z-index:1;opacity:0.85;}
+    .scanline{
+      position:absolute;top:0;width:100%;height:3px;
+      background:linear-gradient(transparent,var(--cyan),transparent);
+      animation:scan 6s linear infinite;pointer-events:none;z-index:2;opacity:0.15;
+    }
+    
+    .hero-content{position:relative;z-index:10;max-width:1100px;}
+    .hero h1{
+      font-size:clamp(4.5rem,14vw,10rem);font-weight:900;letter-spacing:12px;
+      background:linear-gradient(90deg,var(--cyan),var(--magenta),var(--lime),var(--cyan));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-size:300%;animation:neonFlow 4s linear infinite, glitch 3s infinite;
+      text-shadow:0 0 30px var(--cyan),0 0 60px var(--magenta),0 0 100px var(--cyan);
+      margin-bottom:20px;
+    }
+    .typing{
+      font-size:clamp(1.6rem,4.5vw,2.6rem);color:var(--lime);
+      text-shadow:0 0 25px var(--lime);min-height:1.4em;margin:0 auto 40px;
+      font-weight:500;white-space:pre;
+    }
+    
+    .hero-buttons{
+      display:flex;flex-wrap:wrap;gap:25px;justify-content:center;
+    }
+    .btn-hero{
+      padding:22px 58px;font-size:1.75rem;font-weight:700;text-transform:uppercase;
+      border:4px solid var(--cyan);color:var(--cyan);background:transparent;
+      border-radius:14px;transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
+      box-shadow:0 0 40px var(--cyan);min-width:320px;
+      display:flex;align-items:center;justify-content:center;gap:12px;
+    }
+    .btn-hero:hover{
+      background:var(--cyan);color:#000;transform:scale(1.1) translateY(-4px);
+      box-shadow:0 0 70px var(--cyan),0 0 120px var(--magenta);
+    }
+    .btn-hero.whatsapp{
+      background:var(--magenta);border-color:var(--magenta);color:#000;
+    }
+
+    /* ==================== SECCIONES ==================== */
+    .section{
+      padding:110px 5% 120px;
+      position:relative;
+    }
+    .section-title{
+      text-align:center;margin-bottom:80px;
+    }
+    .section-title h2{
+      font-size:clamp(2.8rem,8vw,4.8rem);font-weight:900;
+      background:linear-gradient(90deg,var(--cyan),var(--magenta),var(--violet));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      text-shadow:0 0 50px var(--cyan);
+    }
+    .section-title p{
+      color:#aaa;font-size:1.35rem;margin-top:12px;max-width:720px;margin-left:auto;margin-right:auto;
+    }
+
+    /* Servicios */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));
+      gap:30px;
+      max-width:1480px;margin:0 auto;
+    }
+    .service-card{
+      background:rgba(20,20,45,0.65);
+      border:2px solid rgba(0,255,255,0.15);
+      border-radius:18px;
+      padding:40px 32px;
+      transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
+      position:relative;overflow:hidden;
+      backdrop-filter:blur(12px);
+    }
+    .service-card::before{
+      content:'';position:absolute;top:-50%;left:-50%;width:80%;height:80%;
+      background:radial-gradient(circle,rgba(0,255,255,0.25) 0%,transparent 70%);
+      opacity:0;transition:all 0.6s;
+    }
+    .service-card:hover{
+      transform:translateY(-18px) scale(1.03);
+      border-color:var(--cyan);
+      box-shadow:0 0 50px var(--cyan);
+    }
+    .service-card:hover::before{opacity:1;top:-10%;left:-10%;}
+    
+    .service-card i{
+      font-size:3.2rem;margin-bottom:20px;
+      background:linear-gradient(90deg,var(--cyan),var(--lime));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .service-card h3{
+      font-size:1.65rem;margin-bottom:16px;color:var(--cyan);
+      text-shadow:0 0 20px var(--cyan);
+    }
+    .service-card p{
+      color:#ddd;line-height:1.7;font-size:1.08rem;
+    }
+    .ver-mas{
+      display:inline-flex;align-items:center;gap:8px;margin-top:28px;
+      color:var(--lime);font-weight:700;text-decoration:none;
+      transition:0.4s;
+    }
+    .ver-mas:hover{color:var(--magenta);text-shadow:0 0 20px var(--magenta);}
+
+    /* Nosotros / Cyber */
+    .cyber-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:40px;
+      max-width:1300px;margin:0 auto;
+    }
+    .cyber-text{
+      font-size:1.25rem;line-height:1.8;color:#ccc;
+    }
+    .cyber-text strong{color:var(--cyan);text-shadow:0 0 15px var(--cyan);}
+
+    /* Clientes */
+    .clientes-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;
+      max-width:1300px;margin:0 auto;
+    }
+    .testimonial{
+      background:rgba(20,20,45,0.6);padding:35px;border-radius:18px;
+      border:1px solid rgba(157,0,255,0.3);transition:0.4s;
+    }
+    .testimonial:hover{border-color:var(--violet);box-shadow:0 0 40px var(--violet);}
+    .testimonial p{font-style:italic;color:#ddd;}
+    .testimonial .author{margin-top:20px;color:var(--lime);font-weight:700;}
+
+    /* Tienda */
+    .tienda-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;
+      max-width:1300px;margin:0 auto;
+    }
+    .product-card{
+      background:rgba(20,20,45,0.6);border-radius:18px;overflow:hidden;
+      transition:0.4s;border:2px solid transparent;
+    }
+    .product-card:hover{border-color:var(--cyan);box-shadow:0 0 40px var(--cyan);}
+    .product-card img{width:100%;height:220px;object-fit:cover;}
+    .product-info{padding:24px;}
+    .price{color:var(--lime);font-size:1.6rem;font-weight:700;}
+
+    /* Contacto */
+    .contact-form{
+      max-width:680px;margin:0 auto;background:rgba(20,20,45,0.6);
+      padding:50px;border-radius:20px;border:2px solid rgba(0,255,255,0.2);
+      backdrop-filter:blur(12px);
+    }
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;padding:18px;margin-bottom:20px;background:rgba(0,0,0,0.4);
+      border:2px solid rgba(0,255,255,0.3);color:#fff;border-radius:10px;
+      font-family:'Rajdhani',sans-serif;font-size:1.1rem;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus{
+      outline:none;border-color:var(--cyan);box-shadow:0 0 25px var(--cyan);
+    }
+    .contact-form button{
+      width:100%;padding:20px;font-size:1.4rem;font-weight:700;
+      background:var(--magenta);color:#000;border:none;border-radius:12px;
+      cursor:pointer;transition:0.4s;
+    }
+    .contact-form button:hover{
+      background:var(--cyan);transform:scale(1.05);
+    }
+
+    /* Animaciones */
+    @keyframes neonFlow{0%{background-position:0%}100%{background-position:300%}}
+    @keyframes glitch{
+      0%,100%{transform:translate(0);}
+      20%{transform:translate(-6px,6px);clip-path:polygon(0 0,100% 0,100% 20%,0 20%);}
+      40%{transform:translate(6px,-6px);clip-path:polygon(0 80%,100% 80%,100% 100%,0 100%);}
+      60%{transform:translate(-4px,0);}
+      80%{transform:translate(4px,6px);}
+    }
+    @keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(120vh)}}
+    @keyframes pulse-cyan{0%,100%{box-shadow:0 0 0 0 rgba(0,255,255,0.6)}70%{box-shadow:0 0 0 30px rgba(0,255,255,0)}}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+    /* Fade-in con JS */
+    .fade-in{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1);}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:768px){
+      .menu-toggle{display:block;}
+      nav{
+        display:none;flex-direction:column;width:100%;background:rgba(5,5,10,0.98);
+        padding:30px 5%;position:absolute;top:100%;left:0;border-top:3px solid var(--cyan);
+        box-shadow:0 10px 30px rgba(0,255,255,0.3);
+      }
+      nav.active{display:flex;}
+      nav a{font-size:1.7rem;margin:18px 0;}
+      .hero-buttons{flex-direction:column;}
+      .btn-hero{min-width:100%;}
+      .services{padding:80px 5% 100px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/573189411374" class="whatsapp-fixed" target="_blank" aria-label="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">EXTINTO</div>
+    
+    <div class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</div>
+    
+    <nav id="mainNav">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#tienda">Tienda</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- BARRA DE ESTADO CYBER -->
+  <div class="status-bar">
+    <span>SYSTEM ONLINE</span>
+    <span>NEURAL PROTOCOL ACTIVE</span>
+    <span>EXTINTO v2.025</span>
+    <span>SECURE CONNECTION • 99.97%</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div id="particles-js"></div>
+    <div class="scanline"></div>
+
+    <div class="hero-content">
+      <h1>RECARGA</h1>
+      <div class="typing" id="typingText"></div>
+      
+      <div class="hero-buttons">
+        <a href="#servicios" class="btn-hero">Ver Protocolos</a>
+        <a href="https://wa.me/573189411374?text=Quiero%20activar%20el%20protocolo%20de%20recarga%20inmediata" target="_blank" class="btn-hero whatsapp">
+          <i class="fab fa-whatsapp"></i> WhatsApp Directo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section services" id="servicios">
+    <div class="section-title">
+      <h2>Protocolos de Supervivencia</h2>
+      <p>Recarga • Mantenimiento • Certificación • Protección total contra el caos térmico</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <i class="fas fa-sync-alt"></i>
+        <h3>Recarga En Línea</h3>
+        <p>Recarga completa de extintores ABC, BC, CO₂, agua, espuma y halón bajo norma NTC e ISO. Precisión milimétrica.</p>
+        <a href="#" class="ver-mas">Iniciar recarga →</a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <i class="fas fa-tools"></i>
+        <h3>Mantenimiento Preventivo</h3>
+        <p>Revisión completa, limpieza interna, cambio de componentes y sellado con tecnología de grado militar.</p>
+        <a href="#" class="ver-mas">Programar revisión →</a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <i class="fas fa-clipboard-check"></i>
+        <h3>Inspección y Certificación</h3>
+        <p>Inspección visual + funcional según NTC 3705 e internacionales. Certificado digital con QR blockchain.</p>
+        <a href="#" class="ver-mas">Obtener certificado →</a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <i class="fas fa-vial"></i>
+        <h3>Prueba Hidrostática</h3>
+        <p>Prueba obligatoria en cilindros con registro oficial y trazabilidad digital. Seguridad garantizada.</p>
+        <a href="#" class="ver-mas">Solicitar prueba →</a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <i class="fas fa-truck"></i>
+        <h3>Mantenimiento a Domicilio</h3>
+        <p>Servicio en sitio para industrias, edificios, oficinas y residencias. Unidad móvil equipada con IA de diagnóstico.</p>
+        <a href="#" class="ver-mas">Llamar unidad →</a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <i class="fas fa-car"></i>
+        <h3>Recarga Móvil de Emergencia</h3>
+        <p>Atención inmediata 24/7 con flota cyber-móvil para cualquier escenario de alto riesgo.</p>
+        <a href="#" class="ver-mas">Activar emergencia →</a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h3>Capacitación Cyber</h3>
+        <p>Entrenamiento teórico-práctico con simuladores VR para uso correcto y planes de evacuación.</p>
+        <a href="#" class="ver-mas">Reservar entrenamiento →</a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <i class="fas fa-shopping-cart"></i>
+        <h3>Venta de Extintores Nuevos</h3>
+        <p>Stock completo ABC, BC, CO₂, Clase K, especiales para vehículos y ambientes corrosivos.</p>
+        <a href="#" class="ver-mas">Explorar catálogo →</a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <i class="fas fa-cogs"></i>
+        <h3>Refacciones Originales</h3>
+        <p>Válvulas, mangueras, manómetros, sellos y accesorios certificados con garantía de fábrica.</p>
+        <a href="#" class="ver-mas">Ver catálogo →</a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <i class="fas fa-calendar-alt"></i>
+        <h3>Plan Anual Elite</h3>
+        <p>Contrato de mantenimiento preventivo con visitas programadas, reportes digitales y prioridad 24/7.</p>
+        <a href="#" class="ver-mas">Activar plan →</a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Extintores Especiales</h3>
+        <p>Clase K (cocina), marinos, vehículos eléctricos y ambientes de alta corrosión. Tecnología de vanguardia.</p>
+        <a href="#" class="ver-mas">Solicitar cotización →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section class="section" id="nosotros" style="background:linear-gradient(135deg,#0a0a0a,#1a0033);">
+    <div class="section-title">
+      <h2>El Sistema EXTINTO</h2>
+      <p>Donde el futuro se protege con código y fuego se apaga con precisión</p>
+    </div>
+    <div class="cyber-grid">
+      <div class="cyber-text fade-in">
+        <p>Somos <strong>EXTINTO</strong>, la primera empresa de extinción de incendios con estética y tecnología cyberpunk 2025.</p>
+        <p>Combinamos 15 años de experiencia técnica con un enfoque futurista: diagnóstico por IA, trazabilidad blockchain y unidades móviles equipadas como si fueran salidas de una película de Blade Runner.</p>
+        <p>Porque en un mundo que se quema, nosotros somos el reset.</p>
+      </div>
+      <div class="cyber-text fade-in">
+        <p>Nuestro lema: <strong>“El fuego no tiene chance contra un sistema bien programado”</strong>.</p>
+        <p>Certificados por las normas más estrictas, pero con el alma de un hacker que no acepta límites. Cada recarga es una obra de arte digital. Cada mantenimiento, un upgrade de seguridad.</p>
+        <p>¿Listo para activar el protocolo?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section class="section" id="clientes" style="background:#0a0a0a;">
+    <div class="section-title">
+      <h2>Clientes que ya hackearon el fuego</h2>
+    </div>
+    <div class="clientes-grid">
+      <div class="testimonial fade-in">
+        <p>“EXTINTO transformó nuestro protocolo de seguridad. La unidad móvil llegó en 11 minutos y salvó la planta. Nivel cyber total.”</p>
+        <div class="author">— NEONFORGE • Industria 4.0</div>
+      </div>
+      <div class="testimonial fade-in">
+        <p>“El plan anual es impecable. Reportes en tiempo real y certificados digitales. Nunca había visto algo tan profesional.”</p>
+        <div class="author">— VOID TOWER • Edificio inteligente</div>
+      </div>
+      <div class="testimonial fade-in">
+        <p>“Capacitación VR inolvidable. Mi equipo ahora apaga incendios como en un videojuego… pero en la vida real.”</p>
+        <div class="author">— CYBERPORT • Puerto logístico</div>
+      </div>
+      <div class="testimonial fade-in">
+        <p>“Recarga en línea y servicio 24/7. EXTINTO es el estándar que todos deberían seguir.”</p>
+        <div class="author">— QUANTUM LABS • Investigación</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIENDA -->
+  <section class="section" id="tienda" style="background:linear-gradient(135deg,#0a0a0a,#1a0033);">
+    <div class="section-title">
+      <h2>Armería Cyber</h2>
+      <p>Extintores listos para combatir el apocalipsis térmico</p>
+    </div>
+    <div class="tienda-grid">
+      <div class="product-card fade-in">
+        <img src="https://picsum.photos/id/1015/600/400" alt="Extintor ABC 5kg">
+        <div class="product-info">
+          <h3>Extintor ABC 5 kg</h3>
+          <p>Multiuso • Para oficinas y hogares</p>
+          <div class="price">$189.000</div>
+          <a href="https://wa.me/573189411374?text=Quiero%20comprar%20Extintor%20ABC%205kg" class="ver-mas" target="_blank">Comprar ahora →</a>
+        </div>
+      </div>
+      <div class="product-card fade-in">
+        <img src="https://picsum.photos/id/102/600/400" alt="Extintor CO2 6kg">
+        <div class="product-info">
+          <h3>Extintor CO₂ 6 kg</h3>
+          <p>Ideal para servidores y laboratorios</p>
+          <div class="price">$265.000</div>
+          <a href="https://wa.me/573189411374?text=Quiero%20comprar%20Extintor%20CO2%206kg" class="ver-mas" target="_blank">Comprar ahora →</a>
+        </div>
+      </div>
+      <div class="product-card fade-in">
+        <img src="https://picsum.photos/id/201/600/400" alt="Extintor Clase K">
+        <div class="product-info">
+          <h3>Extintor Clase K 6 L</h3>
+          <p>Para cocinas industriales</p>
+          <div class="price">$312.000</div>
+          <a href="https://wa.me/573189411374?text=Quiero%20comprar%20Extintor%20Clase%20K" class="ver-mas" target="_blank">Comprar ahora →</a>
+        </div>
+      </div>
+      <div class="product-card fade-in">
+        <img src="https://picsum.photos/id/251/600/400" alt="Kit vehicular">
+        <div class="product-info">
+          <h3>Kit Vehicular 2kg + 1kg</h3>
+          <p>Para autos y motos eléctricas</p>
+          <div class="price">$148.000</div>
+          <a href="https://wa.me/573189411374?text=Quiero%20comprar%20Kit%20Vehicular" class="ver-mas" target="_blank">Comprar ahora →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="section" id="contacto" style="background:#05050a;">
+    <div class="section-title">
+      <h2>Establecer Conexión</h2>
+      <p>Envía tu señal. Respondemos en menos de 60 segundos.</p>
+    </div>
+    
+    <div class="contact-form fade-in">
+      <form id="contactForm">
+        <input type="text" id="nombre" placeholder="Nombre / Empresa" required>
+        <input type="tel" id="telefono" placeholder="Teléfono / WhatsApp" required>
+        <textarea id="mensaje" rows="5" placeholder="Describe tu necesidad (recarga, mantenimiento, cotización...)" required></textarea>
+        <button type="submit">ENVIAR SEÑAL AL SISTEMA</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <a href="https://wa.me/573189411374" target="_blank">WhatsApp: +57 318 9411374</a> 
+      • 
+      <a href="#inicio">Volver al núcleo</a>
+    </p>
+    <p>© 2025 EXTINTO Systems • All systems corrupted. Welcome to the void.</p>
+    <p style="font-size:0.8rem;opacity:0.6;margin-top:15px;">
+      Hecho con <i class="fas fa-code"></i> y precisión quirúrgica por un programador que no acepta límites.
+    </p>
+  </footer>
+
+  <!-- PARTICLES.JS -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  
+  <script>
+    // ==================== PARTICLES CONFIG (OPTIMIZADO) ====================
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: window.innerWidth < 768 ? 80 : 160 },
+        color: { value: ["#00ffff", "#ff00ff", "#9d00ff", "#39ff14"] },
+        shape: { type: ["circle", "triangle", "star"] },
+        opacity: { value: 0.75, random: true, anim: { enable: true, speed: 1.2 } },
+        size: { value: 3.5, random: true },
+        line_linked: {
+          enable: true,
+          distance: 160,
+          color: "#00ffff",
+          opacity: 0.25,
+          width: 1.2
+        },
+        move: {
+          enable: true,
+          speed: 2.8,
+          direction: "none",
+          random: true,
+          straight: false,
+          attract: { enable: true, rotateX: 800, rotateY: 1600 }
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 140 },
+          push: { particles_nb: 15 }
+        }
+      },
+      retina_detect: true
+    });
+
+    // ==================== TYPING EFFECT ====================
+    function typeWriter(element, text, speed = 60) {
+      let i = 0;
+      element.innerHTML = "";
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+      type();
+    }
+    
+    // ==================== MOBILE MENU ====================
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+      menuToggle.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // ==================== FADE-IN SCROLL ====================
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    
+    fadeElements.forEach(el => observer.observe(el));
+
+    // ==================== CONTACT FORM (WHATSAPP INTEGRATION) ====================
+    const contactForm = document.getElementById('contactForm');
+    
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const nombre = document.getElementById('nombre').value;
+      const telefono = document.getElementById('telefono').value;
+      const mensaje = document.getElementById('mensaje').value;
+      
+      const mensajeFinal = `Hola EXTINTO%0A%0ANombre/Empresa: ${encodeURIComponent(nombre)}%0ATeléfono: ${encodeURIComponent(telefono)}%0AMensaje: ${encodeURIComponent(mensaje)}%0A%0A¡Activar protocolo de emergencia!`;
+      
+      window.open(`https://wa.me/573189411374?text=${mensajeFinal}`, '_blank');
+      
+      // Reset form
+      contactForm.reset();
+      
+      // Feedback visual
+      const btn = contactForm.querySelector('button');
+      const originalText = btn.textContent;
+      btn.style.background = 'var(--lime)';
+      btn.textContent = 'SEÑAL ENVIADA ✓';
+      setTimeout(() => {
+        btn.style.background = '';
+        btn.textContent = originalText;
+      }, 2800);
+    });
+
+    // ==================== CONSOLE LOG (para que se note que eres pro) ====================
+    console.log('%c🚀 EXTINTO Systems v2.025 inicializado correctamente. Bienvenido al núcleo, programador.', 'color:#00ffff;font-family:monospace;font-size:13px;background:#05050a;padding:2px 6px;border:1px solid #00ffff;');
+    console.log('%cCódigo optimizado • Animaciones vanilla • Integración WhatsApp directa • Zero dependencies innecesarias', 'color:#39ff14;font-family:monospace;font-size:11px;');
+
+    // ==================== READY ====================
+    console.log('✅ Sitio listo para impresionar. Nadie te va a frontear ahora.');
+  </script>
+</body>
+</html>
